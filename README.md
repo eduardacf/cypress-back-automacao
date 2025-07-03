@@ -126,17 +126,6 @@ npm run test:prod        # Headless (prod)
 npm run format           # Formata com Prettier
 npm run lint             # Verifica padrões com ESLint
 ```
-
----
-
-### 🌐 Trabalhando com ambientes
-
-O projeto suporta múltiplos ambientes via `CYPRESS_ENV`, que carrega o arquivo correspondente em `config/env/`.
-
-Além disso, é possível sobrescrever a URL diretamente com `BASE_URL`:
-```bash
-BASE_URL=https://sua-api.com CYPRESS_ENV=staging npm run test:staging
-```
 ---
 
 ## 📜 Scripts disponíveis
