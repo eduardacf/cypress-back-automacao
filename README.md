@@ -4,8 +4,19 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue?style=flat-square)
 
 Este projeto contém uma suíte de testes para a API de livros
-da [FakeRestAPI](https://fakerestapi.azurewebsites.net). Os cenários exercitam todos os fluxos de **GET**, *
-*POST**, **PUT** e **DELETE** de forma automatizada.
+da [FakeRestAPI](https://fakerestapi.azurewebsites.net).Os cenários exercitam todos os fluxos de **GET**, **POST**, **PUT** e **DELETE**
+
+## Sumário
+
+- [📌 Por que este projeto é interessante?](#-por-que-este-projeto-é-interessante)
+- [🛠️ Tecnologias Utilizadas](#-tecnologias-utilizadas)
+- [📂 Estrutura do Projeto](#-estrutura-do-projeto)
+- [🧩 Comandos Personalizados](#-comandos-personalizados)
+- [🎯 Como Executar o Projeto](#-como-executar-o-projeto)
+- [📜 Scripts disponíveis](#-scripts-disponíveis)
+- [🤝 Contribuição](#-contribuição)
+- [📄 Licença](#-licença)
+- [📫 Contato](#-contato)
 
 ---
 
@@ -18,16 +29,7 @@ da [FakeRestAPI](https://fakerestapi.azurewebsites.net). Os cenários exercitam 
 - Cobertura de testes com Mochawesome Reports
 
 ---
-## Sumário
 
-- [Tecnologias](#-tecnologias-utilizadas)
-- [Estrutura](#-estrutura-do-projeto)
-- [Comandos](#-comandos-personalizados)
-- [Como Executar](#-como-executar-o-projeto)
-- [Contribuição](#-contribuição)
-- [Licença](#-licença)
-
----
 ## 🛠️ Tecnologias Utilizadas
 
 - [Cypress 14.5.0](https://www.cypress.io/)
@@ -44,8 +46,8 @@ da [FakeRestAPI](https://fakerestapi.azurewebsites.net). Os cenários exercitam 
 ├── cypress/
 │   ├── e2e/api/               # Testes de API
 │   │   └── books.cy.ts
-│   ├── utils/               # Testes de API
-│   │   └── books.cy.ts
+│   ├── utils/               # Rotas e utilidades compartilhadas
+│   │   └── rotas.ts         # Mapeamento das URLs
 │   ├── support/
 │   │   ├── commands/          # Comandos customizados
 │   │   │   └── api.ts
@@ -58,9 +60,6 @@ da [FakeRestAPI](https://fakerestapi.azurewebsites.net). Os cenários exercitam 
 │       └── prod.env            # Configuração PROD
 ├── .github/workflows/         # CI com GitHub Actions
 │   └── cypress.yml
-├── .github/
-│   └── workflows/
-│       └── cypress.yml         # Pipeline de testes no GitHub Actions
 ├── eslint.config.mjs           # Regras do ESLint
 ├── .prettierrc                 # Regras do Prettier
 ├── package.json                # Configurações do projeto e scripts
