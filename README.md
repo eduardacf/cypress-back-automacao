@@ -4,7 +4,7 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue?style=flat-square)
 
 Este projeto contém uma suíte de testes para a API de livros
-da [FakeRestAPI](https://fakerestapi.azurewebsites.net).Os cenários exercitam todos os fluxos de **GET**, **POST**, **PUT** e **DELETE**
+da [FakeRestAPI](https://fakerestapi.azurewebsites.net). Os cenários exercitam todos os fluxos de **GET**, **POST**, **PUT** e **DELETE**
 
 ## Sumário
 
@@ -96,34 +96,35 @@ cy.deletarLivro(id);
 # 1. Clone o repositório
 git clone https://github.com/<usuario>/<repositorio>.git
 
-# 2. Acesse o projeto
+# 2. Acesse a pasta do projeto
 cd <repositorio>
 
 # 3. Instale as dependências
 npm install
 
-# 4. Em `config/env` existem arquivos `.env` para cada ambiente:
+# 4. Configure o ambiente
+# Edite o arquivo em config/env/dev.env (ou staging.env/prod.env) e ajuste a BASE_URL conforme necessário.
+# Exemplo:
+# BASE_URL=https://fakerestapi.azurewebsites.net
 
-- dev.env
-- staging.env
-- prod.env
+# 5. Execute os testes com o ambiente desejado
+# Exemplo com ambiente dev:
+CYPRESS_ENV=dev npm run open:dev        # Abre a interface interativa
+CYPRESS_ENV=dev npm run test:dev        # Executa no terminal
+# Ambiente staging:
+CYPRESS_ENV=staging npm run test:staging
+# Ambiente produção:
+CYPRESS_ENV=prod npm run test:prod
 
-Ajuste o BASE_URL conforme necessário para sua API.
+# 6. Scripts prontos também estão disponíveis:
+npm run test:dev         # Headless (dev)
+npm run open:dev         # UI (dev)
+npm run test:staging     # Headless (staging)
+npm run test:prod        # Headless (prod)
 
-# 5. Defina a variável de ambiente `CYPRESS_ENV` para escolher qual arquivo será carregado.
-# Exemplos:
-CYPRESS_ENV=staging npm run test:dev       # Executa testes em staging no terminal
-CYPRESS_ENV=prod npm run cy:open           # Abre a interface do Cypress no ambiente prod
-
-# 6. Você também pode usar scripts prontos:
-npm run test:dev        # Headless no ambiente dev
-npm run open:dev        # Interface visual no ambiente dev
-npm run test:staging    # Headless no ambiente staging
-npm run test:prod       # Headless no ambiente prod
-
-# 7. Para manter o padrão de código:
-npm run format          # Formata com Prettier
-npm run lint            # Verifica com ESLint
+# 7. Manter o código limpo e padronizado
+npm run format           # Formata com Prettier
+npm run lint             # Verifica padrões com ESLint
 ```
 
 ---
