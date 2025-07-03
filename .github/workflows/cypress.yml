@@ -1,4 +1,4 @@
-name: 🚀 Cypress CI - Testes End-to-End Automatizados
+name: 🚀 Cypress CI - Testes Automatizados de API
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   run-cypress-tests:
-    name: 🧪 Executar suíte de testes E2E com Cypress
+    name: 🧪 Executar testes API com Cypress
     runs-on: ubuntu-latest
     env:
       CYPRESS_ENV: dev
@@ -17,21 +17,28 @@ jobs:
       - name: "📥 Clonar repositório"
         uses: actions/checkout@v3
 
-      - name: "⚙️ Preparar ambiente Node.js"
+      - name: "💾 Cache Node.js"
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: "⚙️ Preparar Node.js"
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      - name: "📦 Instalar dependências com compatibilidade (cypress-axe)"
+      - name: "📦 Instalar dependências"
         run: npm ci --legacy-peer-deps
 
-      - name: "🧪 Executar testes com Cypress (modo headless)"
+      - name: "🧪 Executar testes Cypress"
         run: npx cypress run
 
-      - name: "📁 Garantir diretórios de relatório"
+      - name: "📊 Gerar relatório mochawesome"
         if: always()
-        run: |
-          mkdir -p mochawesome-report
+        run: npm run report || echo "Relatório não gerado"
 
       - name: "🗂️ Upload: Relatório mochawesome"
         if: always()
@@ -40,3 +47,9 @@ jobs:
           name: relatorio-mochawesome
           path: cypress/reports
 
+      - name: "📤 Upload logs de falha"
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: logs-falha
+          path: cypress/logs
