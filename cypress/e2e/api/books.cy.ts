@@ -7,6 +7,7 @@ describe('API - Livros (GET, POST, PUT, DELETE)', () => {
             expect(response.status).to.eq(200);
             expect(response.body).to.be.an('array');
             expect(response.body.length).to.be.greaterThan(0);
+            expect(response.headers).to.have.property('content-type').and.include('application/json');
             response.body.forEach((livro: Livro) => {
                 expect(livro).to.have.all.keys('id', 'title', 'description', 'pageCount', 'excerpt', 'publishDate');
                 expect(livro.id).to.be.a('number');
