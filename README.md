@@ -44,7 +44,7 @@ da [FakeRestAPI](https://fakerestapi.azurewebsites.net). Os cenários exercitam 
 ## 📂 Estrutura do Projeto
 ```plaintext
 ├── cypress/
-│   ├── e2e/api/               # Testes de API
+│   ├── e2e/api/              # Testes de API
 │   │   └── books.cy.ts
 │   ├── utils/               # Rotas e utilidades compartilhadas
 │   │   └── rotas.ts         # Mapeamento das URLs
