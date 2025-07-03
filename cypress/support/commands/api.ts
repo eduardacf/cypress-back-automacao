@@ -1,5 +1,6 @@
 import {rotas} from "../../../utils/rotas";
 import { faker } from '@faker-js/faker';
+import type { Livro } from '../index';
 
 Cypress.Commands.add(
     'validarContratoLivro',
@@ -24,11 +25,15 @@ Cypress.Commands.add('deletarLivro', (id) => {
    return cy.request('DELETE', rotas.livros.porId(id));
 });
 
+Cypress.Commands.add('buscarTodosOsLivro', () => {
+    return cy.request('GET', rotas.livros.base);
+});
+
 Cypress.Commands.add('editarLivro', (id,livro) => {
 return cy.request('PUT', rotas.livros.porId(id), livro);
 });
 
-Cypress.Commands.add('buscarLivro', (id: number, failOnError: boolean = true) => {
+Cypress.Commands.add('buscarLivroPorId', (id: number, failOnError: boolean = true) => {
     return cy.request({
         method: 'GET',
         url: rotas.livros.porId(id),

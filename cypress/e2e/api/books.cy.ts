@@ -1,11 +1,12 @@
-import {rotas} from '../../../utils/rotas';
+import type {Livro} from '../../support';
 
 describe('API - Livros (GET, POST, PUT, DELETE)', () => {
 
     it('Deve buscar todos os livros com sucesso', () => {
-        cy.request(rotas.livros.base).then((response) => {
+        cy.buscarTodosOsLivro().then((response) => {
             expect(response.status).to.eq(200);
-            expect(response.body).to.be.an('array').and.not.be.empty;
+            expect(response.body).to.be.an('array');
+            expect(response.body.length).to.be.greaterThan(0);
             response.body.forEach((livro: Livro) => {
                 expect(livro).to.have.all.keys('id', 'title', 'description', 'pageCount', 'excerpt', 'publishDate');
                 expect(livro.id).to.be.a('number');
@@ -15,7 +16,7 @@ describe('API - Livros (GET, POST, PUT, DELETE)', () => {
     });
 
     it('Deve validar o contrato de um livro existente (id = 1)', () => {
-        cy.request(rotas.livros.porId(1)).then((res) => {
+        cy.buscarLivroPorId(1).then((res) => {
             cy.validarContratoLivro(res);
             expect(res.body.id).to.eq(1);
         });
@@ -57,7 +58,7 @@ describe('API - Livros (GET, POST, PUT, DELETE)', () => {
                     expect(resDelete.status).to.eq(200);
                 });
 
-                cy.buscarLivro(idLivroCriado, false).then((resGet) => {
+                cy.buscarLivroPorId(idLivroCriado, false).then((resGet) => {
                     expect(resGet.status).to.eq(404);
                 });
             });
@@ -65,7 +66,7 @@ describe('API - Livros (GET, POST, PUT, DELETE)', () => {
     });
 
     it('Deve retornar 404 ao tentar buscar um livro inexistente', () => {
-        cy.buscarLivro(99999, false).then((res) => {
+        cy.buscarLivroPorId(99999, false).then((res) => {
             expect(res.status).to.eq(404);
             expect(res.body).to.have.property('title', 'Not Found');
         });

@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
-interface Livro {
+
+export interface Livro {
     id: number;
     title: string;
     description: string;
@@ -8,13 +9,18 @@ interface Livro {
     publishDate: string;
 }
 
-declare namespace Cypress {
-    interface Chainable {
-        deletarLivro(id: number): Chainable<Cypress.Response<any>>;
-        validarContratoLivro(response: Cypress.Response<Livro>): void;
-        criarLivro(livro: Livro): Chainable<Response<any>>;
-        editarLivro(id: any, livro: any): Cypress.Chainable<Cypress.Response<any>>
-        buscarLivro(id: number, failOnError?: boolean): Chainable<Cypress.Response<any>>;
-        gerarLivroFake(): Chainable<Livro>;
+declare global {
+    namespace Cypress {
+        interface Chainable {
+            criarLivro(livro: Livro): Chainable<Cypress.Response<Livro>>;
+            deletarLivro(id: number): Chainable<Cypress.Response>;
+            editarLivro(id: number, livro: Livro): Chainable<Cypress.Response<Livro>>;
+            buscarLivroPorId(id: number, failOnError?: boolean): Chainable<Cypress.Response<Livro>>;
+            validarContratoLivro(response: Cypress.Response<Livro>): void;
+            gerarLivroFake(): Chainable<Livro>;
+            buscarTodosOsLivro(): Cypress.Chainable<Cypress.Response<Livro[]>>
+        }
     }
 }
+
+export {};
