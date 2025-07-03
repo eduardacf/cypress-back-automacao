@@ -3,7 +3,7 @@ import type {Livro} from '../../support';
 describe('API - Livros (GET, POST, PUT, DELETE)', () => {
 
     it('Deve buscar todos os livros com sucesso', () => {
-        cy.buscarTodosOsLivro().then((response) => {
+        cy.buscarTodosOsLivros().then((response) => {
             expect(response.status).to.eq(200);
             expect(response.body).to.be.an('array');
             expect(response.body.length).to.be.greaterThan(0);

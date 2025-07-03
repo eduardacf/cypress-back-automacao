@@ -25,7 +25,7 @@ Cypress.Commands.add('deletarLivro', (id) => {
    return cy.request('DELETE', rotas.livros.porId(id));
 });
 
-Cypress.Commands.add('buscarTodosOsLivro', () => {
+Cypress.Commands.add('buscarTodosOsLivros', () => {
     return cy.request('GET', rotas.livros.base);
 });
 

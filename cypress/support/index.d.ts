@@ -18,7 +18,7 @@ declare global {
             buscarLivroPorId(id: number, failOnError?: boolean): Chainable<Cypress.Response<Livro>>;
             validarContratoLivro(response: Cypress.Response<Livro>): void;
             gerarLivroFake(): Chainable<Livro>;
-            buscarTodosOsLivro(): Cypress.Chainable<Cypress.Response<Livro[]>>
+            buscarTodosOsLivros(): Cypress.Chainable<Cypress.Response<Livro[]>>
         }
     }
 }

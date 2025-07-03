@@ -75,7 +75,7 @@ da [FakeRestAPI](https://fakerestapi.azurewebsites.net). Os cenários exercitam 
 Os comandos customizados facilitam as requisições e validações. Alguns exemplos:
 
 ```ts
-cy.buscarTodosOsLivro();
+cy.buscarTodosOsLivros();
 cy.criarLivro(livroGerado);
 cy.editarLivro(id, livroAtualizado);
 cy.deletarLivro(id);
