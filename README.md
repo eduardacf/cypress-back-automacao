@@ -22,10 +22,10 @@ da [FakeRestAPI](https://fakerestapi.azurewebsites.net). Os cenários exercitam 
 
 - [Tecnologias](#-tecnologias-utilizadas)
 - [Estrutura](#-estrutura-do-projeto)
-- [Comandos](#comandos)
-- [Como Executar](#como-executar)
-- [Contribuição](#contribuicao)
-- [Licença](#licenca)
+- [Comandos](#-comandos-personalizados)
+- [Como Executar](#-como-executar-o-projeto)
+- [Contribuição](#-contribuição)
+- [Licença](#-licença)
 
 ---
 ## 🛠️ Tecnologias Utilizadas
