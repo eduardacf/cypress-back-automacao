@@ -1,0 +1,42 @@
+name: 🚀 Cypress CI - Testes End-to-End Automatizados
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  run-cypress-tests:
+    name: 🧪 Executar suíte de testes E2E com Cypress
+    runs-on: ubuntu-latest
+    env:
+      CYPRESS_ENV: dev
+
+    steps:
+      - name: "📥 Clonar repositório"
+        uses: actions/checkout@v3
+
+      - name: "⚙️ Preparar ambiente Node.js"
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: "📦 Instalar dependências com compatibilidade (cypress-axe)"
+        run: npm ci --legacy-peer-deps
+
+      - name: "🧪 Executar testes com Cypress (modo headless)"
+        run: npx cypress run
+
+      - name: "📁 Garantir diretórios de relatório"
+        if: always()
+        run: |
+          mkdir -p mochawesome-report
+
+      - name: "🗂️ Upload: Relatório mochawesome"
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-mochawesome
+          path: cypress/reports
+

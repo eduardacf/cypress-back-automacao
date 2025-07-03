@@ -1,0 +1,29 @@
+{
+  "name": "cypress_project",
+  "version": "1.0.0",
+  "devDependencies": {
+    "@eslint/js": "^9.30.1",
+    "@faker-js/faker": "^9.9.0",
+    "@typescript-eslint/eslint-plugin": "^8.35.1",
+    "@typescript-eslint/parser": "^8.35.1",
+    "axe-core": "^4.10.3",
+    "cypress": "^14.5.0",
+    "cypress-axe": "^1.0.0",
+    "cypress-mochawesome-reporter": "^3.4.0",
+    "dotenv": "^17.0.1",
+    "eslint": "^9.30.1",
+    "eslint-plugin-cypress": "^5.1.0",
+    "prettier": "^3.6.2",
+    "typescript": "^5.8.3"
+  },
+  "scripts": {
+    "test:dev": "CYPRESS_ENV=dev cypress run",
+    "test:staging": "CYPRESS_ENV=staging cypress run",
+    "test:prod": "CYPRESS_ENV=prod cypress run",
+    "open:dev": "CYPRESS_ENV=dev cypress open",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --write \"**/*.{ts,json}\""
+  }
+}
